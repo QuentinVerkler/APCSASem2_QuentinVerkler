@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=MoreAlgorithems
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MoreAlgorithems\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ main()
+comment2.params=nums
+comment2.target=java.util.ArrayList\ mySort(int[])
+comment3.params=nums
+comment3.target=void\ bubbleSort(int[])
+comment4.params=nums
+comment4.target=void\ selectionSort(int[])
+comment5.params=nums
+comment5.target=void\ insertSort(int[])
+numComments=6
