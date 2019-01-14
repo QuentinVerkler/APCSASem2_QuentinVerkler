@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class ArrayListAlgorithms
 {
-    //variables
+    //public variables
     public static int compare = 0;
     public static int swap = 0;
     public static long time = 0;
