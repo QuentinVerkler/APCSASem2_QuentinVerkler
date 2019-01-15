@@ -20,27 +20,27 @@ public class ArrayListAlgorithms
             random.add((int)(Math.random() * 10));
         }
         
-        ArrayList<Integer> sorted = mySort(nums);
+        ArrayList<Integer> sorted = mySort(random);
         
-        for(int i = 0; i < nums.length; i++){
-            System.out.print(nums[i] + ", ");
+        for(int i = 0; i < random.size(); i++){
+            System.out.print(random.get(i) + ", ");
         }
         System.out.println();
         
-        /*
+        
         for(int i = 0; i < sorted.size(); i++){
             System.out.print(sorted.get(i) + ", ");
         }
-        System.out.println(); */
+        System.out.println(); 
         
         
-        //bubbleSort(nums);
-        //selectionSort(nums);
-        insertSort(nums);
-        
-        for(int i = 0; i < nums.length; i++){
-            System.out.print(nums[i] + ", ");
-        }
+        //bubbleSort(random);
+        //selectionSort(random);
+        //insertSort(random);
+        /*
+        for(int i = 0; i < random.size(); i++){
+            System.out.print(random.get(i) + ", ");
+        }*/
         System.out.println();
         System.out.println("Compare: " + compare);
         System.out.println("Swap: " + swap);
@@ -49,22 +49,22 @@ public class ArrayListAlgorithms
     }
     
     //fix this
-    public static ArrayList<Integer> mySort(int[] nums){
+    public static ArrayList<Integer> mySort(ArrayList<Integer> nums){
         long tStart = System.nanoTime();
         ArrayList<Integer> sorted = new ArrayList<Integer>();
         int smallest = 10000;
         //finding smallest number
-        for(int i = 0; i < nums.length; i++){
-            if(nums[i] < smallest){
-                smallest = nums[i];
+        for(int i = 0; i < nums.size(); i++){
+            if(nums.get(i) < smallest){
+                smallest = nums.get(i);
             }
         }
         //loop will stop when ArrayList is equal to nums
-        while(sorted.size() < nums.length){
+        while(sorted.size() < nums.size()){
             //crawls through as smallest increase
-            for(int i = 0; i < nums.length; i++){
-                if(nums[i] == smallest){
-                    sorted.add(nums[i]);
+            for(int i = 0; i < nums.size(); i++){
+                if(nums.get(i) == smallest){
+                    sorted.add(nums.get(i));
                     swap++;
                 }
                 compare++;
@@ -76,26 +76,26 @@ public class ArrayListAlgorithms
         return sorted;
     }
     
-    public static void bubbleSort(int[] nums){
+    public static void bubbleSort(ArrayList<Integer> nums){
         long tStart = System.nanoTime();
-        int end = nums.length - 1; 
+        int end = nums.size() - 1; 
         //outside loop starts and end
         while(end > 1){
             //inside loop starts at beginning and ends at end
             for(int i = 0; i < end; i++){
                 //actual swappers
-                if(nums[i] > nums[i+1]){
-                    int temp = nums[i];
-                    nums[i] = nums[i+1];
-                    nums[i+1] = temp;
+                if(nums.get(i) > nums.get(i+1)){
+                    int temp = nums.get(i);
+                    nums.set(i, nums.get(i+1));
+                    nums.set(i+1, temp);
                     swap++;
                 }
                 compare++;
             }
-            if(nums[end] > nums[end-1]){
+            if(nums.get(end) > nums.get(end-1)){
                 end -= 1;
             }
-            if(nums[end] == nums[end-1]){
+            if(nums.get(end) == nums.get(end-1)){
                 end--;
             }
         }
@@ -103,39 +103,39 @@ public class ArrayListAlgorithms
         time = tEnd - tStart;
     }
     
-    public static void selectionSort(int[] nums){
+    public static void selectionSort(ArrayList<Integer> nums){
         long tStart = System.nanoTime();
         //first loop starts at beginning
-        for(int i = 0; i < nums.length - 1; i++){
+        for(int i = 0; i < nums.size() - 1; i++){
             int place = i;
             //second loop starts at one above i
-            for(int j = i + 1; j < nums.length; j++){
+            for(int j = i + 1; j < nums.size(); j++){
                 //swapper
-                if(nums[j] < nums[place]){
+                if(nums.get(j) < nums.get(place)){
                     place = j;
                 }
                 compare++;
             }
-            int smallNum = nums[place];
-            nums[place] = nums[i];
-            nums[i] = smallNum;
+            int smallNum = nums.get(place);
+            nums.set(place, nums.get(i));
+            nums.set(i, smallNum);
             swap++;
         }
         long tEnd = System.nanoTime();
         time = tEnd - tStart;
     }
     
-    public static void insertSort(int[] nums){
+    public static void insertSort(ArrayList<Integer> nums){
         long tStart = System.nanoTime();
         //starts at beginning
-        for(int i = 1; i < nums.length; i++){
+        for(int i = 1; i < nums.size(); i++){
             //starts at i
             for(int j = i; j > 0; j--){
                 //Swapping code
-                if(nums[j] < nums[j-1]){
-                    int temp = nums[j];
-                    nums[j] = nums[j-1];
-                    nums[j-1] = temp;
+                if(nums.get(j) < nums.get(j-1)){
+                    int temp = nums.get(j);
+                    nums.set(j, nums.get(j-1));
+                    nums.set(j-1, temp);
                     swap++;
                 }
                 compare++;
