@@ -28,24 +28,24 @@ public class ArrayListAlgorithms
         System.out.println();
         
         
-        for(int i = 0; i < sorted.size(); i++){
+        /*for(int i = 0; i < sorted.size(); i++){
             System.out.print(sorted.get(i) + ", ");
         }
-        System.out.println(); 
+        System.out.println();*/
         
         
         //bubbleSort(random);
         //selectionSort(random);
-        //insertSort(random);
-        /*
+        insertSort(random);
+        
         for(int i = 0; i < random.size(); i++){
             System.out.print(random.get(i) + ", ");
-        }*/
+        }
         System.out.println();
         System.out.println("Compare: " + compare);
         System.out.println("Swap: " + swap);
         System.out.println("Time: " + time);
-        
+        System.out.println();
     }
     
     //fix this
