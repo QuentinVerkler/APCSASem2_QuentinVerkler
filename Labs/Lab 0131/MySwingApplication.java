@@ -1,15 +1,27 @@
-
+import javax.swing.*;
 /**
  * Write a description of class MySwingApplication here.
  *
- * @author (your name)
+ * @author (Quentin Verkler)
  * @version (a version number or a date)
  */
 public class MySwingApplication implements Runnable
 {
-    public static void run(){
+    private JFrame jFrame;
+    private CanvasComponent canvasComponent;
+    public void run(){
+        jFrame = new JFrame("title");
+        jFrame.setSize(400, 400);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        canvasComponent = new CanvasComponent(40, 30);
+        jFrame.add(canvasComponent);
+        jFrame.setVisible(true);
+    }
+    public static void main(){
         MySwingApplication mySwingApplicationSwing = new MySwingApplication();
         javax.swing.SwingUtilities.invokeLater(mySwingApplicationSwing);
         
+        
     }
+    
 }
