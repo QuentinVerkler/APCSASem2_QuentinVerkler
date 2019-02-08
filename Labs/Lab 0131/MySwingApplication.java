@@ -16,12 +16,11 @@ public class MySwingApplication implements Runnable
         canvasComponent = new CanvasComponent(40, 30);
         jFrame.add(canvasComponent);
         jFrame.setVisible(true);
+        jFrame.addKeyListener(canvasComponent);
     }
     public static void main(){
         MySwingApplication mySwingApplicationSwing = new MySwingApplication();
         javax.swing.SwingUtilities.invokeLater(mySwingApplicationSwing);
-        
-        
     }
     
 }

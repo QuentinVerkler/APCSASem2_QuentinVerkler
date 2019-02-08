@@ -22,13 +22,16 @@ public class CanvasComponent extends JComponent
     private int gutterX = 10;
     private int gutterY = 10;
     private Timer animationTimer;
+    private int motionSpeed = 1;
     //convas constructor
     CanvasComponent(int tempWidth, int tempHeight){
+        //creating the shapte
         setSize(tempWidth, tempHeight);
         width = tempWidth;
         height = tempHeight;
         x = tempWidth;
         y = tempHeight;
+        //the mouse objects added
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
         animationTimer = new Timer(20, this);
@@ -38,6 +41,7 @@ public class CanvasComponent extends JComponent
     //all methods
     //paint methods
     public void paintComponent(Graphics g){
+        //paints the componenet
         g.setColor(Color.red);
         g.fillRect(x, y, width, height);
     }
@@ -48,8 +52,10 @@ public class CanvasComponent extends JComponent
     }
     
     public void mousePressed(MouseEvent e){
+        //sees if the mouse presses on the shape
         mouseFromX = e.getX();
         mouseFromY = e.getY();
+        //if x and y coordinants equal those of the shape, it is grabbed
         if(mouseFromX == x && mouseFromY == y){
             shapeSelected = true;
         }
@@ -68,8 +74,10 @@ public class CanvasComponent extends JComponent
     }
     
     public void mouseDragged(MouseEvent e){
+        //points where the mouse is
         int mouseToX = e.getX();
         int mouseToY = e.getY();
+        //sets the rectangle to the mouse
         x += mouseToX - mouseFromX;
         y += mouseToY - mouseFromY;
         x = e.getX();
@@ -84,37 +92,57 @@ public class CanvasComponent extends JComponent
     //ActionListener (animation) method
     public void actionPerformed(ActionEvent e){
         Dimension componentSizeDimension = this.getSize();
+        //if it hits the right side, go down
         if(x + width + gutterX > componentSizeDimension.getWidth()){
             animationDeltaX = 0;
             animationDeltaY = 1;
             x = (int)(componentSizeDimension.getWidth()) - width - gutterX - 1;
-            y += animationDeltaY;
+            y += animationDeltaY * motionSpeed;
         }
+        //if it hits the bottom, go right
         if(y + gutterY + height > componentSizeDimension.getHeight()){
             animationDeltaX = -1;
             animationDeltaY = 0;
             y = (int)(componentSizeDimension.getHeight()) - height - gutterY;
-            x += animationDeltaX;
+            x += animationDeltaX * motionSpeed;
         }
+        //if it hits the left side, go up
         if(x < gutterX){
             animationDeltaX = 0;
             animationDeltaY = -1;
             x = gutterX;
-            y += animationDeltaY;
+            y += animationDeltaY * motionSpeed;
         }
+        //if it hits the top, go right
         if(y < gutterY){
             animationDeltaX = 1;
             animationDeltaY = 0;
             y = gutterY;
-            x += animationDeltaX;
+            x += animationDeltaX * motionSpeed;
         }
+        //otherwise, keep on going in set direction
         else{
-            x += animationDeltaX;
-            y += animationDeltaY;
+            x += animationDeltaX * motionSpeed;
+            y += animationDeltaY * motionSpeed;
         }
         repaint();
     }
     
     //KeyListener methods
+    public void keyTyped(KeyEvent e){
+        char keyChar = e.getKeyChar();
+        //if key pressed is '+', go faster. if it's '-', go slower
+        if(keyChar == '+')
+            motionSpeed += 1;
+        else if (keyChar == '-' && motionSpeed > 0)
+            motionSpeed -= 1;
+    }
     
+    public void keyPressed(KeyEvent e){
+        
+    }
+    
+    public void keyReleased(KeyEvent e){
+        
+    }
 }
