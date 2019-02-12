@@ -23,6 +23,7 @@ public class CanvasComponent extends JComponent
     private int gutterY = 10;
     private Timer animationTimer;
     private int motionSpeed = 1;
+    private boolean outsideSelected;
     //convas constructor
     CanvasComponent(int tempWidth, int tempHeight){
         //creating the shapte
@@ -59,10 +60,12 @@ public class CanvasComponent extends JComponent
         if(mouseFromX == x && mouseFromY == y){
             shapeSelected = true;
         }
+        else
+            outsideSelected = true;
     }
     
     public void mouseReleased(MouseEvent e){
-        
+        outsideSelected = false;
     }
     
     public void mouseEntered(MouseEvent e){
@@ -92,6 +95,17 @@ public class CanvasComponent extends JComponent
     //ActionListener (animation) method
     public void actionPerformed(ActionEvent e){
         Dimension componentSizeDimension = this.getSize();
+        //if the mouse is clicked, get 'em!
+        if(outsideSelected == true){
+            //animationDeltaX = (int)(Math.sqrt(Math.pow(mouseFromX + componentSizeDimension.getWidth(), 2)));
+            //animationDeltaY = (int)(Math.sqrt(Math.pow(mouseFromY + componentSizeDimension.getHeight(), 2)));
+            animationDeltaX = (mouseFromX - (x + width/2))/10;
+            animationDeltaY = (mouseFromY - (y + height/2))/10;
+            x+= animationDeltaX * motionSpeed;
+            y+= animationDeltaY * motionSpeed;
+            
+        }
+        
         //if it hits the right side, go down
         if(x + width + gutterX > componentSizeDimension.getWidth()){
             animationDeltaX = 0;
@@ -120,6 +134,7 @@ public class CanvasComponent extends JComponent
             y = gutterY;
             x += animationDeltaX * motionSpeed;
         }
+        
         //otherwise, keep on going in set direction
         else{
             x += animationDeltaX * motionSpeed;
