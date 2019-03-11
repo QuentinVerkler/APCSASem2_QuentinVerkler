@@ -72,25 +72,13 @@ public class ElevensBoard extends Board {
     @Override
     public boolean anotherPlayIsPossible() {
         List<Integer> cards = this.cardIndexes();
-        /*
-        //checking for elevens pair
-        for(int i = 0; i < cards.size() - 1; i++){
-            if(cards.get(i) + cards.get(i+1) == 11)
-                return true;
-        }
-        if(cards.get(0) + cards.get(cards.size()-1) == 11)
+        //if the deck is empty, then there must be combinations
+        if(this.size() <= 0)
             return true;
-        
-        //checking for J, Q, K combo  
-        for(int i = 0; i < cards.size() - 2; i++){
-            if(cards.get(i) + cards.get(i+1) + cards.get(i+2) == 0)
-                return true;
-        }
-        */
         //checking for pair adding to elevens
         for(int i = 0; i < cards.size() - 1; i++){
             for(int j = i + 1; j < cards.size(); j++){
-                if(cards.get(i) + cards.get(j) == 11)
+                if(this.cardAt(i).pointValue() + this.cardAt(j).pointValue() == 11)
                     return true;
             }
         }
@@ -99,13 +87,28 @@ public class ElevensBoard extends Board {
         for(int i = 0; i < cards.size() - 2; i++){
             for(int j = i + 1; j < cards.size() - 1; j++){
                 for(int x = j + 1; x < cards.size(); x++){
-                    if(cards.get(i) + cards.get(j) + cards.get(x) == 0)
+                    Card a = this.cardAt(i);
+                    Card b = this.cardAt(j);
+                    Card c = this.cardAt(x);
+                    List<Integer> places = new ArrayList<Integer>();
+                    places.add(i);
+                    places.add(j);
+                    places.add(x);
+                    if(this.containsJQK(places))
                         return true;
+                    //if J, Q or K is repeated, not possible
+                    /*if(a.rank().equals(b.rank()) || a.rank().equals(c.rank()) ||
+                    b.rank().equals(c.rank()))
+                        return false;
+                    if(a.pointValue() + b.pointValue() + c.pointValue() == 0)
+                        return true;*/
                 }
             }
         }
         //checking if board is empty
-        return !this.isEmpty();
+        if(this.isEmpty())
+            return false;
+        return false;
     }
 
     /**
@@ -118,8 +121,8 @@ public class ElevensBoard extends Board {
      */
     private boolean containsPairSum11(List<Integer> selectedCards) {
         if(selectedCards.size() == 2){
-            Card card1 = this.cardAt(0);
-            Card card2 = this.cardAt(1);
+            Card card1 = this.cardAt(selectedCards.get(0));
+            Card card2 = this.cardAt(selectedCards.get(1));
             return card1.pointValue() + card2.pointValue() == 11;
         }
         else
@@ -136,9 +139,12 @@ public class ElevensBoard extends Board {
      */
     private boolean containsJQK(List<Integer> selectedCards) {
         if(selectedCards.size() == 3){
-            Card card1 = this.cardAt(0);
-            Card card2 = this.cardAt(1);
-            Card card3 = this.cardAt(2);
+            Card card1 = this.cardAt(selectedCards.get(0));
+            Card card2 = this.cardAt(selectedCards.get(1));
+            Card card3 = this.cardAt(selectedCards.get(2));
+            if(card1.rank().equals(card2.rank()) || card1.rank().equals(card3.rank()) ||
+                    card2.rank().equals(card3.rank()))
+                        return false;
             return card1.pointValue() + card2.pointValue() + card3.pointValue() == 0;
         }
         else
