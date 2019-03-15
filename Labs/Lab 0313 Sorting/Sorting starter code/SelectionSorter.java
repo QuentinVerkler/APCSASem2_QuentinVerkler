@@ -22,9 +22,6 @@ public class SelectionSorter extends Sorter
                 }
             }
             swap(a, i, place);
-            /*int smallNum = a[place];
-            a[place] = a[i];
-            a[i] = smallNum;*/
         }
     }
 }
