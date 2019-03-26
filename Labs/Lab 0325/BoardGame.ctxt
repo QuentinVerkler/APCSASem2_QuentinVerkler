@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=BoardGame
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ BoardGames\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=tempName\ tempPlayers\ made
+comment1.target=BoardGame(java.lang.String,\ int,\ int)
+comment1.text=\r\n\ Constructor\ -\ assigns\ name,\ players,\ and\ year\ made\r\n
+comment2.params=
+comment2.target=boolean\ isFun()
+comment2.text=\r\n\ Game\ methods\r\n
+comment3.params=
+comment3.target=java.lang.String\ name()
+comment4.params=
+comment4.target=int\ yearMade()
+comment4.text=\r\n\ BoardGame\ methods\r\n
+numComments=5
