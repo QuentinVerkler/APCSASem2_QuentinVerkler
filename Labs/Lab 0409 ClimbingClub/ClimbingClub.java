@@ -73,4 +73,12 @@ public class ClimbingClub
         }
         return numNames;
     }
+    
+    public String string(){
+        String result = "";
+        for(int i = 0; i < climbList.size(); i++){
+            result += climbList.get(i).getName();
+        }
+        return result;
+    }
 }
