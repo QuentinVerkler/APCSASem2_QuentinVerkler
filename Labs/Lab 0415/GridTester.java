@@ -24,6 +24,7 @@ public class GridTester
      * @postcondition: all cells boolean property is 30% true
      */
     public void loadOccupied(){
+        int id = 0;
         for(int r = 0; r < grid.length; r++){
             for(int c = 0; c < grid[r].length; c++){
                 boolean input;
@@ -31,7 +32,8 @@ public class GridTester
                     input = false;
                 else
                     input = true;
-                Cell temp = new Cell(
+                Cell temp = new Cell(input, id);
+                id++;
             }
         }
     }

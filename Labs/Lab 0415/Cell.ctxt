@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Cell
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Cell\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=a\ b
+comment1.target=Cell(boolean,\ int)
+comment1.text=\r\n\ Constructor\r\n
+comment2.params=
+comment2.target=boolean\ getOccupied()
+comment2.text=\r\n\ Getters\r\n
+comment3.params=
+comment3.target=int\ getId()
+comment4.params=grid
+comment4.target=void\ loadNeighbors(Cell[][])
+comment4.text=\r\n\ Method\ loadNeighbors\r\n\ \r\n\ @parameters\:\ nothing\r\n\ @postcondition\:\ neighbors\ will\ be\ loaded\ with\ the\ neighbors(north,\ east,\ south,\ west)\ that\ are\ empty\r\n\ \r\n
+numComments=5
