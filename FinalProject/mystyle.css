@@ -8,6 +8,30 @@ h1{
 p{
   color: red;
 }
-#call{
+.call{
   font-size: 18px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-right: 100px;
+  margin-left: 100px;
+  text-align: center;
+}
+#top{
+  font-size: 26px;
+}
+.button{
+  border-style: solid;
+  border-color: white;
+  background-color: #ff3bba;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 16;
+  cursor: pointer;
+}
+.center{
+  text-align: center;
+}
+#line div{
+  display:inline-block;
+  width: 130px;
 }
